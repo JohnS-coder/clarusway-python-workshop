@@ -1,6 +1,7 @@
-from flask import Flask,redirect,url_for,render_template
+from flask import Flask,redirect,url_for,render_template,send_file
 
-app = Flask(__name__)
+app = Flask(__name__)#static_url_path="/C://Users\Ahmet\coder-git\clarusway-python-workshop\flask-02-handling-routes-and-templates-on-ec2-linux2\static\mytext.txt")
+
 
 @app.route("/")
 def home():
@@ -9,7 +10,9 @@ def home():
 @app.route("/about")
 def about():
     return '<h1>This is my about page </h1>' 
-
+@app.route("/static")
+def stat():
+    return send_file("C:/Users/Ahmet/coder-git/clarusway-python-workshop/flask-02-handling-routes-and-templates-on-ec2-linux2/static/mytext.txt",attachment_filename="mytext.txt")
 # @app.route("/about")
 # def about():
 #     return '<h1>Either you encountered an error or you are not authorized.</h1>'
