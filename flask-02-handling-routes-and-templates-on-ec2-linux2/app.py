@@ -4,14 +4,29 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "This is home page!.., <h1>HELLO WORLD</h1> "
+    return "This is home page!..for no path, <h1>Welcome Home</h1> "
+
+@app.route("/about")
+def about():
+    return '<h1>This is my about page </h1>' 
+
+# @app.route("/about")
+# def about():
+#     return '<h1>Either you encountered an error or you are not authorized.</h1>'
+
 @app.route("/hello")
 def hello():
     return "<h1>HELLO WORLD</h1>"
 
+@app.route("/error")
+def error():
+    return "<h1>You don't have permission to display this page..</h1>"
+
 @app.route("/admin")
 def admin():
     return redirect(url_for("error"))
+
+
 
 # @app.route('/<name>')
 # def greet(name):
@@ -31,7 +46,7 @@ def admin():
 
 @app.route("/greet-admin")
 def greet_admin():
-    return redirect(url_for("greet",name="Great admin MASTER!!."))
+    return render_template("greet.html",name="Great admin MASTER!!.")
 
 @app.route("/<username>")
 def greet(username):
